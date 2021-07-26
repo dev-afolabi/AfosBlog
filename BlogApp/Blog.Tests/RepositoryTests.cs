@@ -12,13 +12,13 @@ namespace Blog.Tests
         [Fact]
         public void GenericRepository_Add_ProperMethodCalled()
         {
-            //Arrange
-            var testPost = new Post();
-            var context = new Mock<AppDbContext>();
+            ////Arrange
+            //var testPost = new Post();
+            //var context = new Mock<AppDbContext>();
 
-            //Act
-            var repository = new Repository<Post>(context.Object);
-            repository.Add(testPost);
+            ////Act
+            //var repository = new Repository<Post>(context.Object);
+            //repository.Add(testPost);
 
             //Assert
             
