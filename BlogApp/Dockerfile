@@ -3,6 +3,9 @@ WORKDIR /src
 COPY *.sln .
 COPY Blog.Tests/*.csproj Blog.Tests/
 COPY Blog.Presentation/*.csproj Blog.Presentation/
+COPY Blog.Entities/*.csproj Blog.Entities/
+COPY Blog.Data/*.csproj Blog.Data/
+COPY Blog.Core/*.csproj Blog.Core/
 
 RUN dotnet restore
 
