@@ -1,48 +1,452 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>@ViewData["Title"] - Afolabi's Blog</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link href="~/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/main.min.css">
+
+    <script>
+        var pagination_next_page_number = '2',
+            pagination_available_pages_number = '2';
+    </script>
+
+    <meta name="description" content="Thoughts, stories and ideas." />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <meta property="og:image" content="http://norlin.anvodstudio.com/content/images/2020/11/01.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Norlin" />
+    <meta name="twitter:description" content="Thoughts, stories and ideas." />
+    <meta name="twitter:url" content="http://norlin.anvodstudio.com/" />
+    <meta name="twitter:image" content="http://norlin.anvodstudio.com/content/images/2020/11/01.jpg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1280" />
+
+    <script defer src="~/js/portal.min.js" data-ghost="http://norlin.anvodstudio.com/"></script>
+
+    <style>
+        .gh-post-upgrade-cta-content,
+        .gh-post-upgrade-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            width: 100%;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .gh-post-upgrade-cta-content {
+            border-radius: 8px;
+            padding: 40px 4vw;
+        }
+
+        .gh-post-upgrade-cta h2 {
+            color: #ffffff;
+            font-size: 28px;
+            letter-spacing: -0.2px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gh-post-upgrade-cta p {
+            margin: 20px 0 0;
+            padding: 0;
+        }
+
+        .gh-post-upgrade-cta small {
+            font-size: 16px;
+            letter-spacing: -0.2px;
+        }
+
+        .gh-post-upgrade-cta a {
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: none;
+            text-decoration: underline;
+        }
+
+            .gh-post-upgrade-cta a:hover {
+                color: #ffffff;
+                opacity: 0.8;
+                box-shadow: none;
+                text-decoration: underline;
+            }
+
+            .gh-post-upgrade-cta a.gh-btn {
+                display: block;
+                background: #ffffff;
+                text-decoration: none;
+                margin: 28px 0 0;
+                padding: 8px 18px;
+                border-radius: 4px;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+                .gh-post-upgrade-cta a.gh-btn:hover {
+                    opacity: 0.92;
+                }
+    </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Afolabi's Blog</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+<body class="home-template">
+
+    <!-- begin notifications -->
+    <div class="notification notification-subscribe">
+        <a class="notification-close" href="javascript:;"></a>
+        You&#x27;ve successfully subscribed to Norlin
     </div>
 
-    <footer class="border-top footer text-muted">
+    <div class="notification notification-signup">
+        <a class="notification-close" href="javascript:;"></a>
+        Great! Next, complete checkout for full access to Norlin
+    </div>
+
+    <div class="notification notification-signin">
+        <a class="notification-close" href="javascript:;"></a>
+        Welcome back! You&#x27;ve successfully signed in
+    </div>
+
+    <div class="notification notification-checkout">
+        <a class="notification-close" href="javascript:;"></a>
+        Success! Your account is fully activated, you now have access to all content.
+    </div>
+    <!-- end notifications -->
+
+    <!-- begin header -->
+    <div class="header header--top">
         <div class="container">
-            &copy; 2021 - Blog.Presentation - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="header__inner col col-12">
+
+                    <div class="logo">
+                        <a class="logo__link" asp-action="index" asp-controller="Home">
+                            RETHORT
+                        </a>
+                    </div>
+
+                    <div class="menu-overlay">
+                        <nav class="main-nav">
+                            <div class="main-nav__box">
+                                <div class="nav__icon-close">
+                                    <i class="ion ion-md-close"></i>
+                                </div>
+                                <div class="nav-grid">
+                                    <div class="nav-grid__item">
+                                        <h2 class="nav-grid__title">Menu</h2>
+                                        <div class="mobile-nav">
+                                            <ul class="nav__list list-reset">
+                                                <li class="nav__item">
+                                                    <a href="index.html" class="nav__link">Home</a>
+                                                </li>
+                                                <li class="nav__item">
+                                                    <a href="about/index.html" class="nav__link">About</a>
+                                                </li>
+                                                <li class="nav__item">
+                                                    <a href="author/robert/index.html" class="nav__link">Author</a>
+                                                </li>
+                                                <li class="nav__item">
+                                                    <a href="elements/index.html" class="nav__link">Elements</a>
+                                                </li>
+                                                <li class="nav__item">
+                                                    <a href="tag/story/index.html" class="nav__link">Story</a>
+                                                </li>
+
+                                                <li class="nav__item">
+                                                    <a class="nav__link signin-link" href="signin/index.html">Log in</a>
+                                                </li>
+                                                <li class="nav__item">
+                                                    <a class="nav__link signup-link" href="signup/index.html">Sign up</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <div class="navigation">
+                        <div class="top-nav">
+                            <ul class="nav__list list-reset">
+                                <li class="nav__item">
+                                    <a href="index.html" class="nav__link">Home</a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="about/index.html" class="nav__link">About</a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="author/robert/index.html" class="nav__link">Author</a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="elements/index.html" class="nav__link">Elements</a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="tag/story/index.html" class="nav__link">Story</a>
+                                </li>
+
+                                <li class="nav__item">
+                                    <a class="nav__link signin-link" href="signin/index.html">Log in</a>
+                                </li>
+                                <li class="nav__item">
+                                    <a class="nav__link signup-link" href="signup/index.html">Sign up</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+                        <i class="nav__icon nav__icon-search ion ion-md-search"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+
+    <div class="search">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="search__box">
+                        <div class="search__group">
+                            <div class="search__close">
+                                <i class="ion ion-md-close"></i>
+                            </div>
+                            <label for="js-search-input" class="screen-reader-text">Search for Blog</label>
+                            <input type="text" id="js-search-input" class="search__text" autocomplete="off" placeholder="Type to search...">
+                        </div>
+                        <div id="js-search-results" class="search-results-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- begin content -->
+    <main class="content" aria-label="Content">
+        @RenderBody()
+    </main>
+    <!-- end content -->
+
+    <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+
+
+    <!-- begin footer-widgets -->
+    <section class="footer-widgets">
+        <div class="container">
+            <div class="row">
+                <div class="col col-4 col-d-6 col-t-12">
+                    <div class="widget widget-recent">
+
+                        <div class="widget__head">
+                            <h3 class="widget__title">Latest Posts</h3>
+                        </div>
+
+                        <div class="recent-posts">
+
+                            <a class="recent-posts__image" href="that-which-does-not-kill-us-makes-us-stronger/index.html">
+                                <img src="content/images/2020/11/110.jpg" alt="That which does not kill us makes us stronger">
+                            </a>
+
+                            <div class="recent-posts__content">
+                                <div class="article__meta">
+                                    <span class="article__minutes">
+                                        2 min read
+                                    </span>
+                                    <time class="article__date" datetime="2020-11-21">Nov 21, 2020</time>
+                                </div>
+
+                                <h4 class="recent-posts__title"><a href="that-which-does-not-kill-us-makes-us-stronger/index.html">That which does not kill us makes us stronger</a></h4>
+
+                                <div class="article__bottom">
+                                    <div class="article__author">
+                                        <a href="author/robert/index.html" aria-label=""><img class="article__author-image lazy" data-src="/content/images/2020/11/900-9.jpg" alt="Robert Wilson's Picture"></a>
+                                    </div>
+
+                                    <div class="article__bottom-meta">
+                                        <a href="author/robert/index.html" class="article__author-link">Robert Wilson</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="recent-posts">
+
+                            <a class="recent-posts__image" href="do-what-you-can-with-what-you-have-where-you-are/index.html">
+                                <img src="content/images/2020/11/100.jpg" alt="Do what you can, with what you have, where you are">
+                            </a>
+
+                            <div class="recent-posts__content">
+                                <div class="article__meta">
+                                    <span class="article__minutes">
+                                        2 min read
+                                    </span>
+                                    <time class="article__date" datetime="2020-11-20">Nov 20, 2020</time>
+                                </div>
+
+                                <h4 class="recent-posts__title"><a href="do-what-you-can-with-what-you-have-where-you-are/index.html">Do what you can, with what you have, where you are</a></h4>
+
+                                <div class="article__bottom">
+                                    <div class="article__author">
+                                        <a href="author/robert/index.html" aria-label=""><img class="article__author-image lazy" data-src="/content/images/2020/11/900-9.jpg" alt="Robert Wilson's Picture"></a>
+                                    </div>
+
+                                    <div class="article__bottom-meta">
+                                        <a href="author/robert/index.html" class="article__author-link">Robert Wilson</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>      <div class="col col-4 col-d-6 col-t-12">
+                    <div class="widget widget-tag-cloud">
+                        <div class="widget__head">
+                            <h3 class="widget__title">Explore Tags</h3>
+                        </div>
+                        <div class="tag__cloud">
+                            <a href='tag/business/index.html'>Business</a>
+                            <a href='tag/fashion/index.html'>Fashion</a>
+                            <a href='tag/life/index.html'>Life</a>
+                            <a href='tag/lifestyle/index.html'>Lifestyle</a>
+                            <a href='tag/nature/index.html'>Nature</a>
+                            <a href='tag/notes/index.html'>Notes</a>
+                            <a href='tag/rest/index.html'>Rest</a>
+                            <a href='tag/story/index.html'>Story</a>
+                            <a href='tag/technology/index.html'>Technology</a>
+                            <a href='tag/travel/index.html'>Travel</a>
+                            <a href='tag/work/index.html'>Work</a>
+                        </div>
+                    </div>
+                </div>      <div class="col col-4 col-d-6 col-t-12">
+                    <div class="widget widget-subscribe">
+                        <div class="widget__head">
+                            <h3 class="widget__title">Get Interesting News</h3>
+                        </div>
+                        <p class="subscribe-subtitle">Subscribe to our newsletter and we’ll send you the emails of latest posts.</p>
+                        <form class="subscribe-form" data-members-form="subscribe">
+                            <div class="subscribe-group">
+                                <div class="subscribe-group-top">
+                                    <input class="subscribe-email" type="email" placeholder="Email Address" data-members-email>
+                                    <button class="subscribe-button button button--primary" type="submit">Join</button>
+                                </div>
+                                <div class="alert alert--loading">Please wait...</div>
+                                <div class="alert alert--success">Please check your inbox and click the link to confirm your subscription.</div>
+                                <div class="alert alert--error">Please enter a valid email address!</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end footer-widgets -->
+    <!-- begin footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="footer__inner">
+                        <div class="copyright">2021 &copy; <a href="index.html">Norlin</a>. All Right Reserved. Published with <a href="https://ghost.org/">Ghost</a></div>
+                        <div class="social">
+                            <ul class="social__list list-reset">
+                                <li class="social__item">
+                                    <a class="social__link" href="https://twitter.com/ghost" target="_blank" rel="noopener" title="Twitter"><i class="ion ion-logo-twitter"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://www.facebook.com/ghost" target="_blank" rel="noopener" title="Facebook"><i class="ion ion-logo-facebook"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://dribbble.com/" target="_blank" rel="noopener" title="Dribbble"><i class="ion ion-logo-dribbble"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://instagram.com/" target="_blank" rel="noopener" title="Instagram"><i class="ion ion-logo-instagram"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://pinterest.com/" target="_blank" rel="noopener" title="Pinterest"><i class="ion ion-logo-pinterest"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://youtube.com/" target="_blank" rel="noopener" title="Youtube"><i class="ion ion-logo-youtube"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://github.com/" target="_blank" rel="noopener" title="Youtube"><i class="ion ion-logo-github"></i></a>
+                                </li>
+                                <li class="social__item">
+                                    <a class="social__link" href="https://vimeo.com/" target="_blank" rel="noopener" title="Vimeo"><i class="ion ion-logo-vimeo"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/common.min.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <!-- end footer -->
+    <!-- Theme Scripts -->
+    <script>
+
+        // Scripts for Members subscription
+
+        // Parse the URL parameter
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Give the parameter a variable name
+        var action = getParameterByName('action');
+        var stripe = getParameterByName('stripe');
+
+        $(document).ready(function () {
+            if (action == 'subscribe') {
+                $('body').addClass("subscribe-success");
+            }
+            if (action == 'signup') {
+                window.location = 'signup/indexef68.html?action=checkout';
+            }
+            if (action == 'checkout') {
+                $('body').addClass("signup-success");
+            }
+            if (action == 'signin') {
+                $('body').addClass("signin-success");
+            }
+            if (stripe == 'success') {
+                $('body').addClass("checkout-success");
+            }
+
+            $('.notification-close').click(function () {
+                $(this).parent().addClass('closed');
+                var uri = window.location.toString();
+                if (uri.indexOf("?") > 0) {
+                    var clean_uri = uri.substring(0, uri.indexOf("?"));
+                    window.history.replaceState({}, document.title, clean_uri);
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>
